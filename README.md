@@ -20,7 +20,7 @@ http://localhost:1234/v1
 ## A simple LangGraph pipeline:
 
 ### QueryBuilder
-Takes your topic like “behavioural audit reliability of LLMs” and expands into 3–6 search queries.
+Takes ar topic like “behavioural audit reliability of LLMs” and expands into 3–6 search queries.
 
 ### FetchSemanticScholar
 Calls the Semantic Scholar search API for each query and returns candidates.
@@ -29,7 +29,7 @@ Calls the Semantic Scholar search API for each query and returns candidates.
 Deduplicates, ranks by recency + citations + keyword match, picks top N.
 
 ### BriefWriter (LM Studio)
-Your local model writes a one-page “weekly brief” from the ranked list.
+Local model writes a one-page “weekly brief” from the ranked list.
 
-Export
+### Export
 Writes CSV + Markdown.
