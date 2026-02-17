@@ -1,5 +1,7 @@
-# This library lets Python talk to websites and APIs
+# This library lets Python talk to websites and APIs & write to csv
 import requests
+import csv
+
 
 # This function searches Semantic Scholar for papers
 # query = the topic to search for
@@ -45,3 +47,27 @@ if __name__ == "__main__":
         print(f"{i}. {p.get('title')} ({p.get('year')})")
         print(f"   Citations: {p.get('citationCount')} | Venue: {p.get('venue')}")
         print(f"   {p.get('url')}\n")
+
+for i, p in enumerate(results, 1):
+    print(f"{i}. {p.get('title')} ({p.get('year')})")
+    print(f"   Citations: {p.get('citationCount')} | Venue: {p.get('venue')}")
+    print(f"   {p.get('url')}\n")
+
+# Save results to a CSV file
+with open("reading_list.csv", "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+
+    # Write the header row
+    writer.writerow(["Title", "Year", "Citations", "Venue", "URL"])
+
+    # Write one row per paper
+    for p in results:
+        writer.writerow([
+            p.get("title"),
+            p.get("year"),
+            p.get("citationCount"),
+            p.get("venue"),
+            p.get("url"),
+        ])
+
+print("Saved results to reading_list.csv")
